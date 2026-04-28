@@ -1,8 +1,8 @@
 Exercise 2: Questions 1 and 2
-=============================
+
 
 Question 1: Functional List Operations
---------------------------------------
+
 
 All code for Question 1 is in Question1.hs. The file contains one main method
 that tests every function with small examples.
@@ -69,7 +69,7 @@ Result:
 
 
 Question 2: Simple Infinite Lists
----------------------------------
+
 
 All code for Question 2 is in Question2.hs. Since the lists are infinite, the
 main method only prints finite prefixes with take.
