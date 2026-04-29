@@ -161,39 +161,92 @@ See Question4.hs
 \section*{Q5}
 See Question5.hs
 \section*{Q6}
-\beginn{enumerate}[(a)]
+\begin{enumerate}[(a)]
 \item
-Currying is the revriting of a fuction of multziple inputs as a sequennze of fuctions withj one input.
+Currying is the rewriting of a function of multiple inputs as a sequence of functions each taking a single input.
 \[
-f(x,y,z) \quad \text{would be rewritten to} \quad f(x)(y)(z)
+f(x,y,z) \quad \text{can be rewritten as} \quad f(x)(y)(z)
 \]
-I.E a fuction of type 
+I.e.\ a function of type 
 \[
- A \times B \to C
+A \times B \to C
 \]
-Becomes a fuction of type:
+becomes a function of type
 \[
-A \to B\to C
+A \to B \to C.
 \]
-$\lnot$ Curried:
+
+Uncurried:
 \begin{verbatim}
-    add(x,y) = x+y
+add(x,y) = x + y
 \end{verbatim}
 Curried:
 \begin{verbatim}
-    add(x)(y) = x + y
+add(x)(y) = x + y
 \end{verbatim}
-Clearly it holds that:
+
+There is a natural correspondence
 \[
- A \times B \to C \cong A \to B\to C
+A \times B \to C \cong A \to (B \to C),
 \]
-So with enough motivtion any fuction could be rewritten to be curried or uncurried, altough this might be quite a hand full of work for complex fuctions.
-\subsection*{Benefits}
-We can quite easily fix an argument and get a new fuction like so 
+so in principle any function of multiple arguments can be rewritten in curried form (and vice versa), although in practice this may require some effort depending on the language.
+
+\paragraph{Difference to tupled functions}
+A function taking a tuple has type
+\[
+A \times B \to C
+\]
+and receives both arguments at once, whereas a curried function
+\[
+A \to B \to C
+\]
+takes its arguments one after another and returns intermediate functions.
+
+\paragraph{Benefits}
+Currying allows:
+\begin{itemize}
+\item \textbf{Partial application:} fixing some arguments to obtain new functions, e.g.
 \begin{verbatim}
-    add(5) 
+add(5)
 \end{verbatim}
-Which gives as a fuc $y \to 5 + y $. Which makes reausing it less painfull. If we wanted to do this with the uncurried version we would need to write a hlper fuction that gives us a toupe of desiered form.
-\item 
+gives a function $y \mapsto 5 + y$.
+\item \textbf{Code reuse:} specialized functions can easily be derived from general ones.
+\item \textbf{Abstraction:} functions can be composed and passed around more flexibly.
+\item \textbf{Cleaner functional style:} especially useful in functional languages like Haskell.
+\end{itemize}
+
+\item
+The given Haskell code
+\begin{verbatim}
+scale :: Double -> Double -> Double
+scale factor = \x -> factor * x
+\end{verbatim}
+defines a curried function \texttt{scale} that takes a number \texttt{factor} and returns a new function. This returned function takes an argument \texttt{x} and multiplies it by \texttt{factor}.
+
+Thus, \texttt{scale} has type
+\[
+\texttt{Double} \to (\texttt{Double} \to \texttt{Double}),
+\]
+which is a curried function.
+
+It also demonstrates \textbf{partial application}:
+\begin{verbatim}
+double = scale 2
+\end{verbatim}
+Here, \texttt{scale} is applied to a single argument \texttt{2}. The result is a new function
+\[
+\texttt{double} = \lambda x.\; 2 \cdot x,
+\]
+which doubles its input.
+
+Evaluating, for example,
+\begin{verbatim}
+double 3
+\end{verbatim}
+yields
+\[
+2 \cdot 3 = 6.
+\]
+
 \end{enumerate}
 \end{document}
