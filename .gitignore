@@ -1,0 +1,74 @@
+# ===== OS / Editor =====
+
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# ===== LaTeX build files =====
+
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
+
+# Latexmk
+latexmkrc
+
+# ===== Haskell / GHC / Cabal / Stack =====
+
+# GHC interface & object files
+*.hi
+*.o
+*.dyn_o
+*.dyn_hi
+
+# GHCi
+.ghci
+
+# Cabal build directories
+dist/
+dist-*/
+cabal-dev/
+cabal.project.local
+cabal.project.local~
+cabal.project.freeze
+
+# Stack build
+.stack-work/
+
+# Haskell Language Server
+.hie/
+*.hie
+
+# Profiling
+*.prof
+*.hp
+
+# Haddock docs
+*.haddock
+doc/html/
+
+# Executables created by cabal/stack
+*/bin/
+
+# Local compiled executables
+main
+Main
+*.exe
