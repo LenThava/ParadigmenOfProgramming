@@ -70,3 +70,4 @@ main = do
 
   putStrLn "1g) perfectNumbersBelow10000"
   print perfectNumbersBelow10000
+
