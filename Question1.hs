@@ -74,25 +74,25 @@ printSection title = do
 -- small example tests
 main :: IO ()
 main = do
-  printSection "Question 1"
+  printSection "Q1"
 
-  putStrLn "1a) sumTimesFive [1,2,3,4]"
+  putStrLn "1a times5 of [1,2,3,4]"
   print (sumTimesFive [1, 2, 3, 4 :: Integer])
 
-  putStrLn "1b) splitEvenOddIndices [1,2,3,4,5]"
+  putStrLn "1b splitEven and Odd [1,2,3,4,5]"
   print (splitEvenOddIndices [1, 2, 3, 4, 5 :: Integer])
 
-  putStrLn "1c) reverseMiddle \"Haskell\""
+  putStrLn "1c reversal of the middle part \"Haskell\""
   print (reverseMiddle "Haskell")
 
-  putStrLn "1d) isPerfectSquare 16 and 20"
+  putStrLn "1d PerfectSquare of 16 and 20"
   print (isPerfectSquare 16, isPerfectSquare 20)
 
-  putStrLn "1e) countEvenNumbers [1..10]"
+  putStrLn "1e countEven [1..10]"
   print (countEvenNumbers [1 .. 10])
 
-  putStrLn "1f) gcdThree 24 60 96"
+  putStrLn "1f common Divisor 24 60 96"
   print (gcdThree 24 60 96)
 
-  putStrLn "1g) perfectNumbersBelow10000"
+  putStrLn "1g perfects below 1000"
   print perfectNumbersBelow10000
