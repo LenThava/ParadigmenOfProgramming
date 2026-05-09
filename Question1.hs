@@ -58,7 +58,7 @@ properDivisors n = [d | d <- [1 .. n `div` 2], n `mod` d == 0]
 
 -- 1g A
 -- pefect number: sum of its proper divisor
--- checked for <1000
+-- checked for <10000
 perfectNumbersBelow10000 :: [Int]
 perfectNumbersBelow10000 =
   [n | n <- [1 .. 9999], sum (properDivisors n) == n]
@@ -94,5 +94,5 @@ main = do
   putStrLn "1f common Divisor 24 60 96"
   print (gcdThree 24 60 96)
 
-  putStrLn "1g perfects below 1000"
+  putStrLn "1g perfects below 10000"
   print perfectNumbersBelow10000
