@@ -1,17 +1,17 @@
 
--- Question 1: Functional List Operations
--- Each part is implemented as one small function and tested in main.
+-- Q1 - Functional List Operations
+-- the parts have a small function and are tested in main
 
--- 1a)
--- Sum the list and multiply the result by 5.
+-- 1a
+-- sum of the list and result times 5
 sumTimesFive :: Num a => [a] -> a
 sumTimesFive xs = sum xs * 5
 
 
--- 1b)
--- Split the list into values at even and odd indices.
--- The recursion takes two elements at a time: the first goes to the even list,
--- the second to the odd list.
+-- 1b
+-- list split into values of odd and even indices
+-- rekursive: 2 elements are taken, first into even, second into odd
+
 splitEvenOddIndices :: [a] -> ([a], [a])
 splitEvenOddIndices [] = ([], [])
 splitEvenOddIndices [x] = ([x], [])
@@ -20,18 +20,18 @@ splitEvenOddIndices (x:y:rest) =
    in (x : evenItems, y : oddItems)
 
 
--- 1c)
--- Reverse only the middle of a string.
--- The first and last characters stay where they are.
+-- 1c
+-- middle of the string is reversed
+-- first and last characters stay in place
 reverseMiddle :: String -> String
 reverseMiddle [] = []
 reverseMiddle [x] = [x]
 reverseMiddle (first:rest) = first : reverse (init rest) ++ [last rest]
 
 
--- 1d)
--- Check whether a positive integer is a perfect square.
--- We take the square root, round it down, and square it again to check.
+-- 1d
+-- is an in a perfect square? check for it
+-- square root is rounded down and then squared again for a check
 isPerfectSquare :: Integer -> Bool
 isPerfectSquare n
   | n <= 0 = False
@@ -39,39 +39,39 @@ isPerfectSquare n
   where
     root = floor (sqrt (fromIntegral n :: Double))
 
--- 1e)
--- Keep only even numbers with a list comprehension and count them.
+-- 1e
+-- even numbers are kept, and then counted via list compr.
 countEvenNumbers :: [Integer] -> Int
 countEvenNumbers xs = length [x | x <- xs, even x]
 
 
--- 1f)
--- Use gcd twice to get the greatest common divisor of three numbers.
+-- 1f
+-- greatest common devisor is found by using it twice because of three numbers
 gcdThree :: Integer -> Integer -> Integer -> Integer
 gcdThree a b c = gcd (gcd a b) c
 
--- Helper for 1g)
--- Find all divisors of n that are smaller than n itself.
+-- 1g X
+-- divisors of n < than n
 properDivisors :: Int -> [Int]
 properDivisors n = [d | d <- [1 .. n `div` 2], n `mod` d == 0]
 
 
--- 1g)
--- A number is perfect if it equals the sum of its proper divisors.
--- Here we check all numbers below 10000.
+-- 1g A
+-- pefect number: sum of its proper divisor
+-- checked for <1000
 perfectNumbersBelow10000 :: [Int]
 perfectNumbersBelow10000 =
   [n | n <- [1 .. 9999], sum (properDivisors n) == n]
 
 
--- Print a simple section heading for the test output.
+-- test output header
 printSection :: String -> IO ()
 printSection title = do
   putStrLn ""
   putStrLn title
   putStrLn (replicate (length title) '-')
 
--- Run small example tests for all parts of Question 1.
+-- small example tests
 main :: IO ()
 main = do
   printSection "Question 1"
