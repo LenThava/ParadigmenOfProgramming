@@ -1,24 +1,17 @@
 
 -- Question 1: Functional List Operations
--- Each task is implemented as a separate function. The main method at the
--- bottom runs small example calls for all parts of the question.
+-- Each part is implemented as one small function and tested in main.
 
 -- 1a)
--- Sum all values in the input list and multiply the result by 5.
--- The Num constraint keeps this function general: it works for numeric types
--- such as Int, Integer, Float, and Double.
+-- Sum the list and multiply the result by 5.
 sumTimesFive :: Num a => [a] -> a
 sumTimesFive xs = sum xs * 5
 
 
 -- 1b)
--- Split a list into elements at even indices and elements at odd indices.
--- The first list contains positions 0, 2, 4, ... and the second list contains
--- positions 1, 3, 5, ...
---
--- The recursion consumes two elements at a time. The first element of the pair
--- is placed in the even-index list, and the second element is placed in the
--- odd-index list. The base cases handle empty and one-element lists.
+-- Split the list into values at even and odd indices.
+-- The recursion takes two elements at a time: the first goes to the even list,
+-- the second to the odd list.
 splitEvenOddIndices :: [a] -> ([a], [a])
 splitEvenOddIndices [] = ([], [])
 splitEvenOddIndices [x] = ([x], [])
@@ -28,13 +21,8 @@ splitEvenOddIndices (x:y:rest) =
 
 
 -- 1c)
--- Reverse only the middle of a string while keeping the first and last
--- characters fixed. Empty strings and one-character strings are returned
--- unchanged because they do not have a middle part.
---
--- In the final pattern, first is kept as the first character. The rest of the
--- string contains the middle characters plus the original final character, so
--- init rest gives the middle part and last rest gives the final character.
+-- Reverse only the middle of a string.
+-- The first and last characters stay where they are.
 reverseMiddle :: String -> String
 reverseMiddle [] = []
 reverseMiddle [x] = [x]
@@ -43,12 +31,7 @@ reverseMiddle (first:rest) = first : reverse (init rest) ++ [last rest]
 
 -- 1d)
 -- Check whether a positive integer is a perfect square.
--- A number is a perfect square if there is an integer root such that
--- root * root is exactly the original number.
---
--- sqrt works on floating-point numbers, so n is converted to Double first.
--- floor removes any fractional part, and the final multiplication checks
--- whether the rounded-down root was exact.
+-- We take the square root, round it down, and square it again to check.
 isPerfectSquare :: Integer -> Bool
 isPerfectSquare n
   | n <= 0 = False
@@ -57,47 +40,38 @@ isPerfectSquare n
     root = floor (sqrt (fromIntegral n :: Double))
 
 -- 1e)
--- Count how many even numbers occur in a list.
--- The list comprehension keeps only elements for which even x is True, and
--- length counts how many such elements were selected.
+-- Keep only even numbers with a list comprehension and count them.
 countEvenNumbers :: [Integer] -> Int
 countEvenNumbers xs = length [x | x <- xs, even x]
 
 
 -- 1f)
--- Compute the greatest common divisor of three integers.
--- Haskell's built-in gcd handles two numbers, so it is applied twice:
--- first to a and b, then to that result and c.
+-- Use gcd twice to get the greatest common divisor of three numbers.
 gcdThree :: Integer -> Integer -> Integer -> Integer
 gcdThree a b c = gcd (gcd a b) c
 
 -- Helper for 1g)
--- Return all proper divisors of n. A proper divisor divides n exactly but is
--- smaller than n itself.
---
--- It is enough to search up to n `div` 2, because a number larger than half of
--- n cannot be a proper divisor of n.
+-- Find all divisors of n that are smaller than n itself.
 properDivisors :: Int -> [Int]
 properDivisors n = [d | d <- [1 .. n `div` 2], n `mod` d == 0]
 
 
 -- 1g)
--- Find all perfect numbers below 10000.
--- A number is perfect when the sum of its proper divisors is equal to the
--- number itself. For example, 6 is perfect because 1 + 2 + 3 = 6.
+-- A number is perfect if it equals the sum of its proper divisors.
+-- Here we check all numbers below 10000.
 perfectNumbersBelow10000 :: [Int]
 perfectNumbersBelow10000 =
   [n | n <- [1 .. 9999], sum (properDivisors n) == n]
 
 
--- Small helper to make the printed test output easier to read.
+-- Print a simple section heading for the test output.
 printSection :: String -> IO ()
 printSection title = do
   putStrLn ""
   putStrLn title
   putStrLn (replicate (length title) '-')
 
--- Run example tests for all functions in Question 1.
+-- Run small example tests for all parts of Question 1.
 main :: IO ()
 main = do
   printSection "Question 1"
