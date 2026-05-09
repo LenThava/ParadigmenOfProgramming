@@ -64,18 +64,9 @@ perfectNumbersBelow10000 =
   [n | n <- [1 .. 9999], sum (properDivisors n) == n]
 
 
--- test output header
-printSection :: String -> IO ()
-printSection title = do
-  putStrLn ""
-  putStrLn title
-  putStrLn (replicate (length title) '-')
-
 -- small example tests
 main :: IO ()
 main = do
-  printSection "Q1"
-
   putStrLn "1a times5 of [1,2,3,4]"
   print (sumTimesFive [1, 2, 3, 4 :: Integer])
 

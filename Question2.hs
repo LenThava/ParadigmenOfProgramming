@@ -19,19 +19,9 @@ divisibleByThreeAndFive :: [Integer]
 divisibleByThreeAndFive = [15, 30 ..]
 
 
--- header for tests
-printSection :: String -> IO ()
-printSection title = do
-  putStrLn ""
-  putStrLn title
-  putStrLn (replicate (length title) '-')
-
-
 -- we have the infinite lists here and the finite prefixes are shown
 main :: IO ()
 main = do
-  printSection "Q2"
-
   putStrLn "2a first 15 mult. of 3"
   print (take 15 multiplesOfThree)
 
