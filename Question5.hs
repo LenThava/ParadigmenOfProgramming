@@ -23,6 +23,8 @@ valueDistributionClassification xs = answer ratio
     labels = customMap classifyValue xs
     largeValues = customFilter (\x -> classifyValue x == "large") xs
     largeCount = length largeValues
+    -- fromIntegral mkes sure we do not do idiv -> we convert to more general type of number. Here it is fractional, since GHC defoults to double, 
+    -- we could add ::Double to the end of the line to make it explicit 
     ratio = if null xs then 0 else fromIntegral largeCount / fromIntegral (length xs)
 
     answer r

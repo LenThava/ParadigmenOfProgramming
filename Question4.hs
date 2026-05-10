@@ -8,7 +8,7 @@ convertCopperToGSC x =
     splitGSC n =
         let copper = n `mod` 100
             silver = (n `div` 100) `mod` 100
-            gold   = (n `div` 10000) `mod` 100
+            gold   = (n `div` 10000) `mod` 100 -- the ranks kinda imply there are no gold value's abpve 5  ...
         in (gold, silver, copper)
 
     twoDigits n

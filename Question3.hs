@@ -3,6 +3,7 @@ toDigits n
     | n <= 0    = []
     | otherwise = map (read . (:[])) (show n)
 
+-- validate and luh are seperate to make it easier to generate check digit
 validate :: Integer -> Bool
 validate n =
     let digits = toDigits n
@@ -41,7 +42,7 @@ main :: IO ()
 main = do
     putStrLn "=== Credit Card Utilities Demo ==="
 
-    -- Example valid Visa number (passes Luhn)
+    -- Example valid Visa number
     let visaNumber = 4539682995824395
         visaDigits = toDigits visaNumber
 
@@ -69,7 +70,7 @@ main = do
     putStrLn $ "Valid (Luhn): " ++ show (validate badNumber)
     putStrLn $ "Vendor: " ++ identifyVendor (toDigits badNumber)
     
-    putStrLn "\n4) Test 79927398713 (classic Luhn example with leading 0):"
+    putStrLn "\n4) Test 79927398713 (with leading 0):"
 
     let digitsWithLeadingZero = [0,0,0,7,9,9,2,7,3,9,8,7,1,3]
         checkDigit = generateCheckDigit digitsWithLeadingZero

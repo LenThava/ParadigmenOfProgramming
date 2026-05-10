@@ -1,4 +1,5 @@
 --We always assume that the user of these fuctions is smart enought to pass phiscally plousable stuff and correct maginitudes for SI Units
+--Thus we do not check for stuff like negative mass ....
 kineticEnergy :: Double -> Double -> Double
 kineticEnergy m = \v -> 0.5 * m * v^2
 
